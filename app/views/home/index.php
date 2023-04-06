@@ -7,6 +7,8 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>Selamat datang di Home/index</h1>
+    <div class="container p-5">
+        <h1>Selamat datang di Home/index</h1>
+    </div>
 </body>
 </html>
