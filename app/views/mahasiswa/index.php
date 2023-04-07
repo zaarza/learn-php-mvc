@@ -1,4 +1,4 @@
-<div class="p-5 d-flex flex-column row-gap-5">
+<div class="p-5 d-flex flex-column row-gap-3">
     <?php Flasher::flash(); ?>
     <!-- New mahasiswa modal -->
     <!-- Trigger -->
@@ -56,7 +56,10 @@
             <?php foreach ($data['mahasiswa'] as $mahasiswa) : ?>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <?= $mahasiswa['nama'] ?>
-                    <a class="btn btn-primary ms-auto" href="<?= BASE_URL; ?>/mahasiswa/detail/<?= $mahasiswa['id'] ?>">Detail</a>
+                    <div>
+                        <a class="btn btn-primary ms-auto" href="<?= BASE_URL; ?>/mahasiswa/detail/<?= $mahasiswa['id'] ?>">Detail</a>
+                        <a class="btn btn-danger ms-auto" href="<?= BASE_URL; ?>/mahasiswa/delete/<?= $mahasiswa['id'] ?>" onclick="return confirm('Yakin ingin menghapus mahasiswa?')">Hapus</a>
+                    </div>
                 </li>
             <?php endforeach; ?>
         </ul>
