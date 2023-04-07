@@ -1,4 +1,5 @@
 <div class="p-5 d-flex flex-column row-gap-5">
+    <?php Flasher::flash(); ?>
     <!-- New mahasiswa modal -->
     <!-- Trigger -->
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#new-mahasiswa-modal">

@@ -16,6 +16,6 @@
                     <p class="card-text"><?= $data['mahasiswa']['email'] ?></p>
                     <p class="card-text"><?= $data['mahasiswa']['jurusan'] ?></p>
                 </div>
-         </div>
+            </div>
         </div>
     </div>

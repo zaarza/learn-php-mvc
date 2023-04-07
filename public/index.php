@@ -1,4 +1,5 @@
-<?php 
-    require("../app/init.php");
+<?php
+require("../app/init.php");
+if (!session_id()) session_start();
 
-    $app = new App();
+$app = new App();
