@@ -20,6 +20,11 @@ class Mahasiswa extends Controller
         $this->view("templates/footer");
     }
 
+    public function getDetailData()
+    {
+        echo json_encode($this->model("Mahasiswa_Model")->getDetailMahasiswa(intval($_POST['id'])));
+    }
+
     public function new()
     {
         if ($this->model("Mahasiswa_Model")->newMahasiswa($_POST) > 0) {
@@ -28,6 +33,23 @@ class Mahasiswa extends Controller
             exit;
         } else {
             Flasher::setFlash("Gagal menambahkan mahasiswa", "danger");
+            header('Location: ' . BASE_URL . "/mahasiswa");
+            exit;
+        }
+    }
+
+    public function update($id)
+    {
+        if ($this->model("Mahasiswa_Model")->updateMahasiswa($id, $_POST) > 0) {
+            Flasher::setFlash("Berhasil merubah data mahasiswa", "success");
+            header('Location: ' . BASE_URL . "/mahasiswa");
+            exit;
+        } else if ($this->model("Mahasiswa_Model")->updateMahasiswa($id, $_POST) === 0) {
+            Flasher::setFlash("Tidak ada perubahan data mahasiswa", "light");
+            header('Location: ' . BASE_URL . "/mahasiswa");
+            exit;
+        } else {
+            Flasher::setFlash("Gagal merubah data mahasiswa", "danger");
             header('Location: ' . BASE_URL . "/mahasiswa");
             exit;
         }

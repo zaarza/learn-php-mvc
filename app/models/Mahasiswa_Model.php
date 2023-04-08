@@ -23,6 +23,31 @@ class Mahasiswa_Model
         return $this->db->single();
     }
 
+    public function updateMahasiswa($id, $data)
+    {
+        if (
+            !isset($id) ||
+            !isset($data['nama']) ||
+            !isset($data['email']) ||
+            !isset($data['jurusan']) ||
+            !isset($data['nrp'])
+        ) {
+            return false;
+        }
+
+        $this->db->query("UPDATE $this->tableName SET nama=:nama, nrp=:nrp, email=:email, jurusan=:jurusan WHERE id=:id");
+
+        $this->db->bind('id', intval($id));
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('nrp', $data['nrp']);
+        $this->db->bind('email', $data['email']);
+        $this->db->bind('jurusan', $data['jurusan']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
     public function newMahasiswa($data)
     {
         $this->db->query("INSERT INTO $this->tableName VALUES (NULL, :nama, :nrp, :email, :jurusan)");
