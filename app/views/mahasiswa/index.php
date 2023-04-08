@@ -52,6 +52,12 @@
     <div class="container">
         <h1>Daftar Mahasiswa:</h1>
         <p>Data ini diambil dari database</p>
+        <form action="<?= BASE_URL; ?>/mahasiswa/search" method="POST">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Cari berdasarkan nama..." aria-label="Cari mahasiswa berdasarkan nama" aria-describedby="button-addon2" name="keyword">
+                <button class="btn btn-outline-secondary" type="submit" name="search">Cari</button>
+            </div>
+        </form>
         <ul class="list-group">
             <?php foreach ($data['mahasiswa'] as $mahasiswa) : ?>
                 <li class="list-group-item d-flex justify-content-between align-items-center over">

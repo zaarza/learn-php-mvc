@@ -15,6 +15,13 @@ class Mahasiswa_Model
         return $this->db->resultSet();
     }
 
+    public function searchMahasiswaByName($keyword)
+    {
+        $this->db->query("SELECT * FROM $this->tableName WHERE nama LIKE :keyword");
+        $this->db->bind("keyword", "%$keyword%");
+        return $this->db->resultSet();
+    }
+
     public function getDetailMahasiswa($id)
     {
         $this->db->query("SELECT * FROM $this->tableName WHERE id=:id");
